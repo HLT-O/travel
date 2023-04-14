@@ -7,21 +7,36 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: '首页',
     component: Home
   },
   {
+    path: '/customization',
+    name: '定制旅游',
+    component: () => import('../views/Customization.vue')
+  },
+  {
+    path: '/destination',
+    name: '目的地',
+    component: () => import('../views/Destination.vue')
+  },
+  {
+    path: '/news',
+    name: '新闻中心',
+    component: () => import('../views/News.vue')
+  },
+  {
     path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+    name: '关于',
+    component: () => import('../views/About.vue')
+  },
 ]
 
 const router = new VueRouter({
-  routes
+  routes,
+  scrollBehavior () {
+    return { x: 0, y: 0 }
+  }
 })
 
 export default router
